@@ -9,7 +9,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 # download stop words
 nltk.download('stopwords')
-
+tags = pd.read_csv("vectorized_tags.csv")
+tags = tags.columns.to_list()
 
 def tokenizer_fct(sentence) :
     # print(sentence)
@@ -91,6 +92,6 @@ def predire(text):
     a = cleaning(text)
     b = vectoriser(a)
     c = modeliser(b)
-    predicted_tags = labels(c, labels=my_labels)
+    predicted_tags = labels(c, labels=tags)
     return predicted_tags
 
