@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 # download stop words
 nltk.download('stopwords')
-tags = pd.read_csv("vectorized_tags.csv")
+tags = pd.read_csv("scripts/vectorized_tags.csv")
 tags = tags.columns.to_list()
 
 def tokenizer_fct(sentence) :
