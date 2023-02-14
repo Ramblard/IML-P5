@@ -66,14 +66,14 @@ def cleaning(text):
 
 # fonction vectoriser tfidf
 def vectoriser(text):
-    filename = "./scripts/cv_model.sav"
-    multi_tfidf_vectorizer = pickle.load(open(filename, 'rb'))
-    return multi_tfidf_vectorizer.transform([text])
+    filename = "./scripts/cv_model.pkl"
+    tfidf_vec = pickle.load(open(filename, 'rb'))
+    return tfidf_vec.transform([text])
 
 # fonction modeliser
 def modeliser(x):
 
-    filename = "./scripts/ovr_modelsav"
+    filename = "./scripts/ovr_model.pkl"
     logistic_regression = pickle.load(open(filename, 'rb'))
     y = logistic_regression.predict(x)
     print(y)
