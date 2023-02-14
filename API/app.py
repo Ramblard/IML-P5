@@ -8,7 +8,7 @@ from predictions import *
 
 app = Flask(__name__)
 
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/')
 def index():
     return flask.render_template('index.html')
 
