@@ -55,9 +55,9 @@ def transform_bow_fct(desc_text) :
     
 # fonction de nettoyage
 def cleaning(text):
-    text = text.replace('<pre>(.|\n)+?</pre>', '', regex=True)
-    text = text.replace('<a(.|\n)+?>', '', regex=True)
-    text = text.replace('<code>(.|\n)+?</code>', '', regex=True)
+    text = text.replace('<pre>(.|\n)+?</pre>', '')
+    text = text.replace('<a(.|\n)+?>', '')
+    text = text.replace('<code>(.|\n)+?</code>', '')
     text = transform_bow_fct(text)
     return(text)
 
