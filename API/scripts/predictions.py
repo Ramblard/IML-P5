@@ -8,6 +8,9 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 # download stop words
 nltk.download('stopwords')
+nltk.download('punkt')
+
+
 tags = pd.read_csv("scripts/vectorized_tags.csv")
 tags = tags.columns.to_list()
 
