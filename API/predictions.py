@@ -3,8 +3,7 @@ import numpy as np
 import pickle
 import nltk
 from nltk.corpus import stopwords
-from nltk.tokenize import sent_tokenize, word_tokenize
-import re
+from nltk.tokenize import  word_tokenize
 from sklearn.feature_extraction.text import CountVectorizer
 
 # download stop words
