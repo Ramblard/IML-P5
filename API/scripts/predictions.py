@@ -58,7 +58,7 @@ def cleaning(text):
     text = text.str.replace('<pre>(.|\n)+?</pre>', '', regex=True)
     text = text.str.replace('<a(.|\n)+?>', '', regex=True)
     text = text.str.replace('<code>(.|\n)+?</code>', '', regex=True)
-    text = text.apply(lambda x : transform_bow_fct(x))
+    text = transform_bow_fct(text)
     return(text)
 
 # fonction vectoriser tfidf
