@@ -10,7 +10,11 @@ from sklearn.feature_extraction.text import CountVectorizer
 nltk.download('stopwords')
 nltk.download('punkt')
 
+#Import du modèle
+filename = "./scripts/ovr_model.pkl"
+lr = pickle.load(open(filename, 'rb'))
 
+#Import des tags
 tags = pd.read_csv("scripts/vectorized_tags.csv")
 tags = tags.columns.to_list()
 
@@ -20,18 +24,19 @@ def tokenizer_fct(sentence) :
     word_tokens = word_tokenize(sentence_clean)
     return word_tokens
 
-# Stop words
+# Importe la liste des stops words + stop words perso
 from nltk.corpus import stopwords
 stop_w = list(set(stopwords.words('english'))) + ['[', ']', ',', '.', ':', '?', '(', ')', '>', '<']\
                                                + ['like', 'use', 'using', 'want', 'way', 'strong', 'errors', 'error', 'pre', 'code']\
                                                + ['.+[1-9].+']
 
+#Filtre les stop words
 def stop_word_filter_fct(list_words) :
     filtered_w = [w for w in list_words if not w in stop_w]
     filtered_w2 = [w for w in filtered_w if len(w) > 2]
     return filtered_w2
 
-# lower case et alpha
+# lower case 
 def lower_start_fct(list_words) :
     lw = [w.lower() for w in list_words if (not w.startswith("@")) 
     #                                   and (not w.startswith("#"))
@@ -72,10 +77,7 @@ def vectoriser(text):
 
 # fonction modeliser
 def modeliser(x):
-
-    filename = "./scripts/ovr_model.pkl"
-    logistic_regression = pickle.load(open(filename, 'rb'))
-    y = logistic_regression.predict(x)
+    y = lr.predict(x)
     print(y)
     return y
 
@@ -89,7 +91,7 @@ def labels(y, labels):
             pred.append(labels[i])
     return pred
 
-
+#Fonction finale appelant toutes les autres
 def predire(text):
     a = cleaning(text)
     b = vectoriser(a)

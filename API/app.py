@@ -26,7 +26,6 @@ def tags():
 
         return jsonify({"question":text, "nombre_tags":nombre_tags, "tags":predicted_tags})
 
-    # Otherwise, handle the GET request
     text = request.args.get('text')
     predicted_tags = predire(text)
     nombre_tags = len(predicted_tags)
